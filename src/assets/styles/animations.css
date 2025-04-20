@@ -1,39 +1,36 @@
 /* Intersection Observer Animations */
 
-/* Base hide state for all animatable elements */
+/* Base hide state for all animatable elements with no-intersect attribute */
 [no-intersect] {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
-  transition-delay: var(--animation-delay, 0ms);
 }
 
-/* Fade in animation when element becomes visible */
-:global(.intersect:not([no-intersect])),
-:global(.motion-safe\:intersect\:animate-fade:not([no-intersect])) {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Different animation options */
-.fade-up:not([no-intersect]) {
+/* Animation classes */
+.fade-up {
   animation: fadeUp 0.6s ease forwards;
   animation-delay: var(--animation-delay, 0ms);
 }
 
-.fade-in:not([no-intersect]) {
+.fade-in {
   animation: fadeIn 0.6s ease forwards;
   animation-delay: var(--animation-delay, 0ms);
 }
 
-.slide-in-right:not([no-intersect]) {
+.slide-in-right {
   animation: slideInRight 0.6s ease forwards;
   animation-delay: var(--animation-delay, 0ms);
 }
 
-.slide-in-left:not([no-intersect]) {
+.slide-in-left {
   animation: slideInLeft 0.6s ease forwards;
   animation-delay: var(--animation-delay, 0ms);
+}
+
+/* Fallback style to ensure content is visible even if animations fail */
+[class*="intersect"] {
+  opacity: 1;
 }
 
 /* Animation keyframes */
