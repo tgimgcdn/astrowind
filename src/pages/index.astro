@@ -96,7 +96,7 @@ const metadata = {
     <Header links={navItems} isSticky showToggleTheme position="right" />
   </div>
   <main>
-    <section class="py-12 text-center intersect-once intersect-quarter" no-intersect>
+    <section class="py-12 text-center intersect-once intersect-quarter fade-in" style="--animation-delay: 0ms">
       <h1 class="text-5xl font-bold text-gray-900 dark:text-white mb-4">欢迎来到我们的网站</h1>
       <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">这里有精彩的内容等待您探索</p>
     </section>
@@ -107,5 +107,21 @@ const metadata = {
 <style>
   .header-container {
     width: 100%;
+  }
+  
+  .fade-in {
+    animation: fadeInAnimation 0.6s ease forwards;
+    animation-delay: var(--animation-delay, 0ms);
+  }
+
+  @keyframes fadeInAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
