@@ -10,7 +10,9 @@ const contentItems = Array(16).fill(null).map((_, index) => ({
   link: '#',
   image: {
     src: index % 2 === 0 ? '/hero-image.png' : '/default.png',
-    alt: `内容项 ${index + 1} 的图片`
+    alt: `内容项 ${index + 1} 的图片`,
+    width: 400,
+    height: 300
   }
 }));
 
