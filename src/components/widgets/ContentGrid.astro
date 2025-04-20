@@ -16,12 +16,12 @@ interface Props {
 const { items } = Astro.props as Props;
 ---
 
-<div class="relative">
+<div class="relative mt-8">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-[400px] overflow-x-auto">
-    {items.map((item) => (
+    {items.map((item, index) => (
       <a
         href={item.href || '#'}
-        class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+        class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 hover:translate-y-[-5px]"
       >
         <div class="relative aspect-[4/3]">
           <Image
@@ -33,9 +33,10 @@ const { items } = Astro.props as Props;
             loading="lazy"
             decoding="async"
           />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300 text-gray-900 dark:text-white">
             {item.title}
           </h3>
           <p class="text-muted dark:text-slate-400">
