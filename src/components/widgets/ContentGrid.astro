@@ -17,9 +17,7 @@ const { items } = Astro.props as Props;
 ---
 
 <div class="relative">
-  <div class="absolute inset-0 bg-gradient-to-r from-background to-transparent w-1/2 z-10"></div>
-  <div class="absolute inset-0 bg-gradient-to-l from-background to-transparent w-1/2 right-0 z-10"></div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-4 md:px-8 overflow-x-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-[calc(50%-200px)]">
     {items.map((item) => (
       <a
         href={item.href || '#'}
