@@ -3,16 +3,15 @@ import Layout from '~/layouts/Layout.astro';
 import ContentGrid from '~/components/widgets/ContentGrid.astro';
 import Header from '~/components/widgets/Header.astro';
 
-// 创建16个内容项
-const contentItems = Array(16).fill({
-  title: '内容项',
+// 创建16个内容项，交替使用两种图片
+const contentItems = Array(16).fill(null).map((_, index) => ({
+  title: `内容项 ${index + 1}`,
   description: '这是一个内容项的描述，展示在网格布局中。',
   link: '#',
-  image: 'https://source.unsplash.com/random/300x200?sig='
-}).map((item, index) => ({
-  ...item,
-  title: `内容项 ${index + 1}`,
-  image: `https://source.unsplash.com/random/300x200?sig=${index}`
+  image: {
+    src: index % 2 === 0 ? '/hero-image.png' : '/default.png',
+    alt: `内容项 ${index + 1} 的图片`
+  }
 }));
 
 const navItems = [
@@ -29,7 +28,7 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <div class="header-container px-[400px] mx-auto">
+  <div class="header-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <Header links={navItems} isSticky showToggleTheme position="right" />
   </div>
   <main class="flex-1">
