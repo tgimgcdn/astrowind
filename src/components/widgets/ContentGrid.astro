@@ -1,115 +1,81 @@
 ---
-import Layout from '~/layouts/Layout.astro';
-import ContentGrid from '~/components/widgets/ContentGrid.astro';
-import Header from '~/components/widgets/Header.astro';
+import Image from '~/components/common/Image.astro';
 
-const items = [
-  {
-    title: "Astro 入门指南",
-    description: "学习如何使用 Astro 构建快速、现代的网站。从基础到高级技巧，一应俱全。",
-    image: {
-      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Astro 入门"
-    },
-    href: "#"
-  },
-  {
-    title: "Tailwind CSS 教程",
-    description: "掌握 Tailwind CSS 的实用技巧，快速构建响应式界面。",
-    image: {
-      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Tailwind CSS"
-    },
-    href: "#"
-  },
-  {
-    title: "响应式设计",
-    description: "学习如何创建适应各种设备的完美布局。",
-    image: {
-      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "响应式设计"
-    },
-    href: "#"
-  },
-  {
-    title: "性能优化",
-    description: "提升网站性能的关键技巧和最佳实践。",
-    image: {
-      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "性能优化"
-    },
-    href: "#"
-  },
-  {
-    title: "SEO 最佳实践",
-    description: "提高网站搜索引擎排名的实用指南。",
-    image: {
-      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "SEO"
-    },
-    href: "#"
-  },
-  {
-    title: "无障碍设计",
-    description: "创建对所有人都友好的网站体验。",
-    image: {
-      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "无障碍设计"
-    },
-    href: "#"
-  },
-  {
-    title: "现代 JavaScript",
-    description: "掌握最新的 JavaScript 特性和最佳实践。",
-    image: {
-      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "JavaScript"
-    },
-    href: "#"
-  },
-  {
-    title: "TypeScript 入门",
-    description: "学习如何使用 TypeScript 提升代码质量。",
-    image: {
-      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "TypeScript"
-    },
-    href: "#"
-  }
-];
+interface Props {
+  items: {
+    title: string;
+    description: string;
+    image?: {
+      src: string;
+      alt: string;
+    } | string;
+    href?: string;
+    link?: string;
+  }[];
+  columns?: number;
+  defaultStyles?: boolean;
+  classes?: {
+    container?: string;
+    item?: string;
+  };
+}
 
-const navItems = [
-  { text: 'Home', href: '/' },
-  { text: 'Blog', href: '/blog' },
-  { text: 'About', href: '/about' },
-  { text: 'Contact', href: '/contact' },
-];
+const { 
+  items, 
+  columns = 4, 
+  defaultStyles = true,
+  classes = {} 
+} = Astro.props;
 
-const metadata = {
-  title: '首页',
-  description: '欢迎访问我们的网站',
-};
+const { container: containerClass = '', item: itemClass = '' } = classes;
 ---
 
-<Layout metadata={metadata}>
-  <div class="header-container px-[400px] mx-auto">
-    <Header links={navItems} isSticky showToggleTheme position="right" />
+<div class={`relative mt-8 ${containerClass}`}>
+  <div class={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${columns} gap-8 ${defaultStyles ? 'px-4 md:px-6' : ''}`}>
+    {items.map((item, index) => {
+      const href = item.href || item.link || '#';
+      const imageSrc = typeof item.image === 'string' ? item.image : item.image?.src;
+      const imageAlt = typeof item.image === 'string' ? item.title : item.image?.alt || item.title;
+      
+      return (
+        <a
+          href={href}
+          class={`group block rounded-lg overflow-hidden ${defaultStyles ? 'shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 hover:translate-y-[-5px]' : ''} ${itemClass}`}
+          style={`--animation-delay: ${index * 100}ms`}
+        >
+          {imageSrc && (
+            <div class="relative aspect-[4/3]">
+              <Image
+                class="w-full h-full object-cover"
+                width={400}
+                height={300}
+                src={imageSrc}
+                alt={imageAlt}
+                loading="lazy"
+                decoding="async"
+              />
+              {defaultStyles && (
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              )}
+            </div>
+          )}
+          <div class={`${defaultStyles ? 'p-6' : ''}`}>
+            <h3 class={`text-xl font-bold mb-2 ${defaultStyles ? 'group-hover:text-primary transition-colors duration-300 text-gray-900 dark:text-white' : ''}`}>
+              {item.title}
+            </h3>
+            <p class={`${defaultStyles ? 'text-muted dark:text-slate-400' : ''}`}>
+              {item.description}
+            </p>
+          </div>
+        </a>
+      );
+    })}
   </div>
-  <main>
-    <section class="py-12 text-center intersect-once intersect-quarter fade-in" style="--animation-delay: 0ms">
-      <h1 class="text-5xl font-bold text-gray-900 dark:text-white mb-4">欢迎来到我们的网站</h1>
-      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">这里有精彩的内容等待您探索</p>
-    </section>
-    <ContentGrid items={items} />
-  </main>
-</Layout>
+</div>
 
 <style>
-  .header-container {
-    width: 100%;
-  }
-  
   .fade-in {
+    opacity: 0;
     animation: fadeInAnimation 0.6s ease forwards;
     animation-delay: var(--animation-delay, 0ms);
   }
@@ -124,4 +90,10 @@ const metadata = {
       transform: translateY(0);
     }
   }
-</style>
+  
+  /* 后备样式，确保即使动画失败内容也会显示 */
+  .intersect-once:not(:has([data-animated])) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+</style> 
