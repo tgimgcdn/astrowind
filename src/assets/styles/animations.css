@@ -1,0 +1,80 @@
+/* Intersection Observer Animations */
+
+/* Base hide state for all animatable elements */
+[no-intersect] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+/* Fade in animation when element becomes visible */
+:global(.intersect:not([no-intersect])),
+:global(.motion-safe\:intersect\:animate-fade:not([no-intersect])) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Different animation options */
+.fade-up:not([no-intersect]) {
+  animation: fadeUp 0.6s ease forwards;
+  animation-delay: var(--animation-delay, 0ms);
+}
+
+.fade-in:not([no-intersect]) {
+  animation: fadeIn 0.6s ease forwards;
+  animation-delay: var(--animation-delay, 0ms);
+}
+
+.slide-in-right:not([no-intersect]) {
+  animation: slideInRight 0.6s ease forwards;
+  animation-delay: var(--animation-delay, 0ms);
+}
+
+.slide-in-left:not([no-intersect]) {
+  animation: slideInLeft 0.6s ease forwards;
+  animation-delay: var(--animation-delay, 0ms);
+}
+
+/* Animation keyframes */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+} 
