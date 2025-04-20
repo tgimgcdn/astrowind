@@ -92,8 +92,16 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <Header links={navItems} isSticky showToggleTheme />
+  <div class="header-container px-[400px]">
+    <Header links={navItems} isSticky showToggleTheme />
+  </div>
   <main>
     <ContentGrid items={items} />
   </main>
 </Layout>
+
+<style>
+  .header-container {
+    @apply mx-auto;
+  }
+</style>
