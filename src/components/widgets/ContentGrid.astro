@@ -8,6 +8,8 @@ interface Props {
     image?: {
       src: string;
       alt: string;
+      width?: number;
+      height?: number;
     } | string;
     href?: string;
     link?: string;
@@ -36,6 +38,8 @@ const { container: containerClass = '', item: itemClass = '' } = classes;
       const href = item.href || item.link || '#';
       const imageSrc = typeof item.image === 'string' ? item.image : item.image?.src;
       const imageAlt = typeof item.image === 'string' ? item.title : item.image?.alt || item.title;
+      const imageWidth = typeof item.image === 'string' ? 400 : item.image?.width || 400;
+      const imageHeight = typeof item.image === 'string' ? 300 : item.image?.height || 300;
       
       return (
         <a
@@ -47,8 +51,8 @@ const { container: containerClass = '', item: itemClass = '' } = classes;
             <div class="relative aspect-[4/3]">
               <Image
                 class="w-full h-full object-cover"
-                width={400}
-                height={300}
+                width={imageWidth}
+                height={imageHeight}
                 src={imageSrc}
                 alt={imageAlt}
                 loading="lazy"
