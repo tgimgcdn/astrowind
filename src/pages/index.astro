@@ -92,16 +92,20 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <div class="header-container px-[400px]">
-    <Header links={navItems} isSticky showToggleTheme />
+  <div class="header-container px-[400px] mx-auto">
+    <Header links={navItems} isSticky showToggleTheme position="right" />
   </div>
   <main>
+    <section class="py-12 text-center intersect-once intersect-quarter" no-intersect>
+      <h1 class="text-5xl font-bold text-gray-900 dark:text-white mb-4">欢迎来到我们的网站</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">这里有精彩的内容等待您探索</p>
+    </section>
     <ContentGrid items={items} />
   </main>
 </Layout>
 
 <style>
   .header-container {
-    @apply mx-auto;
+    width: 100%;
   }
 </style>
