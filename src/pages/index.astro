@@ -1,244 +1,90 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import Layout from '~/layouts/Layout.astro';
+import ContentGrid from '~/components/widgets/ContentGrid.astro';
 
-import Content from '~/components/widgets/Content.astro';
+const items = [
+  {
+    title: "Astro 入门指南",
+    description: "学习如何使用 Astro 构建快速、现代的网站。从基础到高级技巧，一应俱全。",
+    image: {
+      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Astro 入门"
+    },
+    href: "#"
+  },
+  {
+    title: "Tailwind CSS 教程",
+    description: "掌握 Tailwind CSS 的实用技巧，快速构建响应式界面。",
+    image: {
+      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Tailwind CSS"
+    },
+    href: "#"
+  },
+  {
+    title: "响应式设计",
+    description: "学习如何创建适应各种设备的完美布局。",
+    image: {
+      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "响应式设计"
+    },
+    href: "#"
+  },
+  {
+    title: "性能优化",
+    description: "提升网站性能的关键技巧和最佳实践。",
+    image: {
+      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "性能优化"
+    },
+    href: "#"
+  },
+  {
+    title: "SEO 最佳实践",
+    description: "提高网站搜索引擎排名的实用指南。",
+    image: {
+      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "SEO"
+    },
+    href: "#"
+  },
+  {
+    title: "无障碍设计",
+    description: "创建对所有人都友好的网站体验。",
+    image: {
+      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "无障碍设计"
+    },
+    href: "#"
+  },
+  {
+    title: "现代 JavaScript",
+    description: "掌握最新的 JavaScript 特性和最佳实践。",
+    image: {
+      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "JavaScript"
+    },
+    href: "#"
+  },
+  {
+    title: "TypeScript 入门",
+    description: "学习如何使用 TypeScript 提升代码质量。",
+    image: {
+      src: "https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "TypeScript"
+    },
+    href: "#"
+  }
+];
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
-  ignoreTitleTemplate: true,
+  title: '首页',
+  description: '欢迎访问我们的网站',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Content Block 1 -->
-  <Content
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 2 -->
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 3 -->
-  <Content
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 4 -->
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 5 -->
-  <Content
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 6 -->
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 7 -->
-  <Content
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 8 -->
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 9 -->
-  <Content
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 10 -->
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 11 -->
-  <Content
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 12 -->
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 13 -->
-  <Content
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 14 -->
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 15 -->
-  <Content
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
-
-  <!-- Content Block 16 -->
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'Get started with AstroWind',
-        description: 'Start your web journey with AstroWind – harness Astro and Tailwind CSS for a stunning site. Explore our guide now.',
-      }
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Guide',
-    }}
-  />
+  <main>
+    <ContentGrid items={items} />
+  </main>
 </Layout>
