@@ -21,7 +21,9 @@ const { items } = Astro.props as Props;
     {items.map((item, index) => (
       <a
         href={item.href || '#'}
-        class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 hover:translate-y-[-5px]"
+        class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800 hover:translate-y-[-5px] intersect-once intersect-quarter"
+        style={`--animation-delay: ${index * 100}ms`}
+        no-intersect
       >
         <div class="relative aspect-[4/3]">
           <Image
@@ -46,4 +48,18 @@ const { items } = Astro.props as Props;
       </a>
     ))}
   </div>
-</div> 
+</div>
+
+<style>
+  [no-intersect] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: var(--animation-delay, 0ms);
+  }
+
+  :global(.motion-safe\:intersect\:animate-fade:not([no-intersect])) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style> 
