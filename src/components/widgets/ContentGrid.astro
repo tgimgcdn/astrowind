@@ -17,7 +17,7 @@ const { items } = Astro.props as Props;
 ---
 
 <div class="relative">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-[calc(50%-200px)]">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-[200px] overflow-x-auto">
     {items.map((item) => (
       <a
         href={item.href || '#'}
