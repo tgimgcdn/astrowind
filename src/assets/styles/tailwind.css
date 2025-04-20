@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './animations.css';
+
 @layer utilities {
   .bg-page {
     background-color: var(--aw-color-bg-page);
