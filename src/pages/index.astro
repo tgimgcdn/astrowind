@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/Layout.astro';
 import ContentGrid from '~/components/widgets/ContentGrid.astro';
+import Header from '~/components/widgets/Header.astro';
 
 const items = [
   {
@@ -77,6 +78,13 @@ const items = [
   }
 ];
 
+const navItems = [
+  { text: 'Home', href: '/' },
+  { text: 'Blog', href: '/blog' },
+  { text: 'About', href: '/about' },
+  { text: 'Contact', href: '/contact' },
+];
+
 const metadata = {
   title: '首页',
   description: '欢迎访问我们的网站',
@@ -84,6 +92,7 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <Header links={navItems} isSticky showToggleTheme />
   <main>
     <ContentGrid items={items} />
   </main>
